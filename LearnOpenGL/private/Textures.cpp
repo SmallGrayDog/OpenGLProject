@@ -122,7 +122,16 @@ int main()
 		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
 		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f };
+		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
+
+
+		1.f,    1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+		-1.f,  -1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+		1.f,   -1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+		1.f,    1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+		-1.f,  -1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+		-1.f,   1.f,   0.f,   0.f,   0.f,   0.f,   0.f,   0.f,
+	};
 	// positions all containers
 	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
@@ -245,18 +254,17 @@ int main()
 			// calculate the model matrix for each object and pass it to shader before drawing
 			glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 			//model = glm::translate(model, glm::vec3(0, 0, 0));
-			model = glm::translate(model, _Vec3Pos);
+			//model = glm::translate(model, _Vec3Pos);
 			ourShader.setMat4("model", model);
 			ourShader.setVec3("viewPos", camera.Position);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
+			glDrawArrays(GL_TRIANGLES, 36, 42);
 		}
 
 
-		// ShaderDebuger
-		_ShaderDebuger.use();
-		glBindVertexArray(_DebugerVAO);
-		//glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		//// ShaderDebuger
+		//_ShaderDebuger.use();
+		//glBindVertexArray(_DebugerVAO);
+		//glDrawArrays(GL_TRIANGLES, 0, 6);
 
 
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

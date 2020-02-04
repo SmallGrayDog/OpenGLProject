@@ -2,15 +2,15 @@
 
 in vec3 FragPos;
 
-out vec4 FragColor;
-
 bool inRect(float,float,float,float);
 void ledRectChar(int,float,float,float,float);
 void showFloat(float);
 
 void main() {
     // showFloat(-.1111111);
-    showFloat(float(-9765));
+    // showFloat(11.11);
+  if (FragPos.x > 0.1)
+      gl_FragColor = vec4(1, 0, 0, 1.0);
 }
 
 void showFloat(float f){
@@ -18,6 +18,7 @@ void showFloat(float f){
     int k = 0;
     int iPart = int(floor(abs(f)));
     int fPart = int(fract(abs(f))*100000.0);
+    float m=0.86;
     
     // 初始化数组,全部置为代表黑色的12
     for(int i=0; i<20; i++){
@@ -57,8 +58,8 @@ void showFloat(float f){
 }
 
 bool inRect(float x1,float x2, float y1, float y2){
-    // if(vTexCoord.x>x1 && vTexCoord.x<x2 && vTexCoord.y>y1 && vTexCoord.y<y2) 
-    // { return true; } else { return false; }
+    if(FragPos.x>x1 && FragPos.x<x2 && FragPos.y>y1 && FragPos.y<y2) 
+    { return true; } else { return false; }
   return true;
 }
 
