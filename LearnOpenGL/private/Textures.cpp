@@ -209,7 +209,7 @@ int main()
 	ourShader.setInt("material.diffuse", 0);
 	ourShader.setInt("material.specular", 1);
 	ourShader.setFloat("material.shininess", 32.0f);
-	ourShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+	ourShader.setVec3("light.position", -0.2f, -1.0f, -0.3f);
 	ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
 	ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
 	ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
@@ -253,11 +253,11 @@ int main()
 		{
 			// calculate the model matrix for each object and pass it to shader before drawing
 			glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-			//model = glm::translate(model, glm::vec3(0, 0, 0));
-			//model = glm::translate(model, _Vec3Pos);
+			model = glm::translate(model, glm::vec3(0, 0, 0));
+			model = glm::translate(model, _Vec3Pos);
 			ourShader.setMat4("model", model);
 			ourShader.setVec3("viewPos", camera.Position);
-			glDrawArrays(GL_TRIANGLES, 36, 42);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
 
