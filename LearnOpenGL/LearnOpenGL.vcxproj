@@ -134,6 +134,7 @@
     <ClCompile Include="private\Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="public\mesh.h" />
     <ClInclude Include="public\Shader_m.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
